@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Demo Even/Odd Game | quyen2971997
+  </title>
+
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/vendors/feather/feather.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/vendors/typicons/typicons.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/vendors/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/vertical-layout-light/style.css">
+  <link rel="shortcut icon" href="{{ ASSETS_ROOT }}/images/favicon.png" />
+
+  <!-- Specific Page CSS goes HERE  -->
+  {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>This Smart Contract is deployed on BSC Testnet <a href="https://testnet.bscscan.com/address/0x498B0384D00bB9ba49f4eD2C88bc257B110670bc">Visit</a></h2>
+      <p class="" id="web3-status">No wallet connected. Connect wallet to show accounts and their ETH balances.</p>
+      <div id="prepare">
+        <button class="btn btn-primary" id="btn-connect">
+          Connect wallet
+        </button>
+      </div>
+      <div id="connected" style="display: none">
+        <button class="btn btn-primary" id="btn-disconnect">
+          Disconnect wallet
+        </button>
+        <hr>
+        <div id="network">
+          <p>
+            <strong>Connected blockchain:</strong> <span id="network-name"></span>
+          </p>
+          <p>
+            <strong>Selected account:</strong> <span id="selected-account"></span>
+          </p>
+        </div>
+        <hr>
+        <h3>Your account balances</h3>
+        <table class="table table-listing">
+          <thead>
+          <th>Address</th>
+          <th>ETH balance</th>
+          </thead>
+          <tbody id="accounts">
+          </tbody>
+        </table>
+        <hr>
+        <div class="card">
+          <div class="card-body">
+            <h2 class=" d-flex justify-content-center"> Let's play an "Even or Odd" game!!!</h2>
+
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row d-flex justify-content-center">
+              <h1 class="d-flex justify-content-around">Roll Dice</h1>
+              <h4 class="card-title d-flex justify-content-center">Pot: &nbsp <span id="contract-funding"></span></h4>
+              <h4 class="card-title d-flex justify-content-center text-success" id="text-mid-status"> You can put in 0.01 BNB each time </h4>
+              <div class="d-flex justify-content-around">
+                <button type="button" id="btn-join-even" class="btn btn-success">Put In Even</button>
+                <button type="button" id="btn-join-odd" class="btn btn-success">Put In Odd</button>
+              </div>
+              <div class="d-flex justify-content-around">
+                <button type="button" id="btn-end-bet" class="btn btn-lg btn-danger btn-sm ">End Game</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="form-group flex-column justify-content-around">
+            <div class="input-group input-group-lg">
+              <input value="0.1" type="text" id="input-deposit-amount" placeholder="Input amount" aria-describedby="addon-bnb">
+              <span class="input-group-addon" id="addon-bnb">BNB</span>
+            </div>                
+               
+            <button type="button" id="btn-deposit" class="btn btn-warning">Deposit</button>
+            <button type="button" id="btn-get-history" class="btn btn-info">History</button>
+          </div> 
+
+        </div>
+        <p>Please try to switch between different accounts in your wallet if your wallet supports this functonality.</p>
+      </div>
+      <br>
+      <div class="well">
+        <p class="text-muted">See also <a href="https://www.linkedin.com/in/quyen2971997">LinkedIn</a> or <a href="https://github.com/quyen2971997">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- We use simple <template> templating for the example -->
+<div id="templates" style="display: none">
+  <template id="template-balance">
+    <tr>
+      <th class="address"></th>
+      <td class="balance"></td>
+    </tr>
+  </template>
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS Plugins goes HERE  -->
+{% block js_plugins %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3modal-dynamic-import@1.11.1/dist/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+<script type="text/javascript" src="{{ ASSETS_ROOT }}/js/web3connect.js"></script>
+
+{% endblock js_plugins %}
+
+
+
